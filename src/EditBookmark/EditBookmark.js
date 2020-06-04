@@ -44,12 +44,14 @@ class EditBookmark extends Component {
         return res.json()
       })
       .then(responseData => {
+        const data = responseData.find(book => book.id === bookmarkId)
+        
         this.setState({
-          id: responseData.id,
-          title: responseData.title,
-          url: responseData.url,
-          description: responseData.description,
-          rating: responseData.rating,
+          id: data.id,
+          title: data.title,
+          url: data.url,
+          description: data.description,
+          rating: data.rating,
         })
       })
       .catch(error => {
